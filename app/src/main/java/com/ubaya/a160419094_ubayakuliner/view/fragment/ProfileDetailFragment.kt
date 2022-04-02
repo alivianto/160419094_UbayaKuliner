@@ -35,9 +35,9 @@ class ProfileDetailFragment : Fragment() {
 
     private fun observeViewModel(){
         viewModel.userLiveData.observe(viewLifecycleOwner) {
-            textProfileName.text = "Name: ${it.name}"
-            textProfileEmail.text = "Email: ${it.email}"
-            textProfileNoTelp.text = "No.Telp: ${it.noTelp}"
+            textProfileName.text = it.name
+            textProfileEmail.text = it.email
+            textProfileNoTelp.text = it.noTelp
         }
     }
 

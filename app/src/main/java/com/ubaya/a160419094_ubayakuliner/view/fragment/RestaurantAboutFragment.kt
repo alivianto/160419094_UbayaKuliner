@@ -40,22 +40,18 @@ class RestaurantAboutFragment : Fragment() {
         viewModel.restaurantDetailLiveData.observe(viewLifecycleOwner) {
             val restaurantDetail = viewModel.restaurantDetailLiveData.value
             restaurantDetail?.let{
-                for(item in it) {
-                    if(item.id == restoID){
-                        textRestoName.text = item.name
-                        textRestoAddress.text = "Address: ${item.address}"
-                        textRestoRating.text = item.rating
-                        imageViewRestoDetailPhoto.loadImage(item.photo, progressBarRestoDetailPhoto)
+                textRestoName.text = it.name
+                textRestoAddress.text = "Address: ${it.address}"
+                textRestoRating.text = it.rating
+                imageViewRestoDetailPhoto.loadImage(it.photo, progressBarRestoDetailPhoto)
 
-                        textMondayOH.text = item.opening_hours.monday
-                        textTuesdayOH.text = item.opening_hours.tuesday
-                        textWednesdayOH.text = item.opening_hours.wednesday
-                        textThursdayOH.text = item.opening_hours.thursday
-                        textFridayOH.text = item.opening_hours.friday
-                        textSaturdayOH.text = item.opening_hours.saturday
-                        textSundayOH.text = item.opening_hours.sunday
-                    }
-                }
+                textMondayOH.text = it.opening_hours.monday
+                textTuesdayOH.text = it.opening_hours.tuesday
+                textWednesdayOH.text = it.opening_hours.wednesday
+                textThursdayOH.text = it.opening_hours.thursday
+                textFridayOH.text = it.opening_hours.friday
+                textSaturdayOH.text = it.opening_hours.saturday
+                textSundayOH.text = it.opening_hours.sunday
             }
         }
     }

@@ -35,7 +35,11 @@
         android:id="@+id/itemBookmark"
         android:name="com.ubaya.a160419094_ubayakuliner.view.fragment.BookmarkFragment"
         android:label="Bookmark Screen"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_itemBookmark_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.ubaya.a160419094_ubayakuliner.view.fragment.ProfileFragment"
@@ -66,6 +70,20 @@
             app:destination="@id/itemHome"
             app:popUpTo="@id/itemHome"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_itemBookmark"
+            app:destination="@id/itemBookmark"
+            app:popUpTo="@id/itemBookmark"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_restaurantAboutFragment"
+            app:destination="@id/restaurantAboutFragment" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_restaurantMenuFragment"
+            app:destination="@id/restaurantMenuFragment" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_restaurantReviewsFragment"
+            app:destination="@id/restaurantReviewsFragment" />
     </fragment>
     <dialog
         android:id="@+id/restaurantMenuDetailFragment"

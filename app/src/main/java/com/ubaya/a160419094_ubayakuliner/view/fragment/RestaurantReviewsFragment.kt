@@ -52,11 +52,7 @@ class RestaurantReviewsFragment : Fragment() {
         viewModel.restaurantDetailLiveData.observe(viewLifecycleOwner) {
             val restaurantDetail = viewModel.restaurantDetailLiveData.value
             restaurantDetail?.let{
-                for(item in it) {
-                    if(item.id == restoID){
-                        restaurantReviewAdapter.updateRestaurantReviewList(item.reviews)
-                    }
-                }
+                restaurantReviewAdapter.updateRestaurantReviewList(it.reviews)
             }
         }
     }

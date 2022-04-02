@@ -12,29 +12,33 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.a160419094_ubayakuliner.model.Restaurant
 
-class RestaurantDetailViewModel(application: Application) : AndroidViewModel(application){
-    val restaurantDetailLiveData = MutableLiveData<Restaurant>()
+class RestaurantBookmarkViewModel(application: Application): AndroidViewModel(application) {
+
+    val restaurantsBookmarkLD = MutableLiveData<ArrayList<Restaurant>>()
+    val restaurantsBookmarkLoadErrorLD = MutableLiveData<Boolean>()
+    val loadingLD = MutableLiveData<Boolean>()
 
     val TAG = "volleyTag"
-    private var queue: RequestQueue ?= null
+    private var queue: RequestQueue? = null
 
-    fun fetch(id: String?) {
+    fun refresh() {
+        loadingLD.value = true
+        restaurantsBookmarkLoadErrorLD.value = false
+
         queue = Volley.newRequestQueue(getApplication())
-        var url = "https://alivianto.github.io/ubaya-kuliner-json/restaurant-near-ubaya-data.json"
+        var url = "https://alivianto.github.io/ubaya-kuliner-json/restaurant-bookmark.json"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
                 val sType = object : TypeToken<ArrayList<Restaurant>>() { }.type
                 val result = Gson().fromJson<ArrayList<Restaurant>>(response, sType)
-                for(item in result){
-                    if(item.id == id){
-                        restaurantDetailLiveData.value = item
-                    }
-                }
-                //restaurantDetailLiveData.value = result
+                restaurantsBookmarkLD.value = result
+                loadingLD.value = false
                 Log.d("showvolley", response.toString())
             },
             {
+                loadingLD.value = false
+                restaurantsBookmarkLoadErrorLD.value = true
                 Log.d("errorvolley", it.toString())
             }
         ).apply {
@@ -42,10 +46,12 @@ class RestaurantDetailViewModel(application: Application) : AndroidViewModel(app
         }
 
         queue?.add(stringRequest)
+
     }
 
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
     }
+
 }

@@ -2,11 +2,10 @@ package com.ubaya.a160419094_ubayakuliner.view.fragment
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Adapter
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -21,6 +20,7 @@ import com.ubaya.a160419094_ubayakuliner.viewmodel.RestaurantDetailViewModel
 import com.ubaya.a160419094_ubayakuliner.viewmodel.RestaurantMenusListViewModel
 import kotlinx.android.synthetic.main.fragment_restaurant_detail.*
 import kotlinx.android.synthetic.main.fragment_restaurant_list.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -28,8 +28,6 @@ import kotlinx.android.synthetic.main.fragment_restaurant_list.*
  * create an instance of this fragment.
  */
 class RestaurantDetailFragment : Fragment() {
-
-//    val fragments: ArrayList<Fragment> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,13 +38,7 @@ class RestaurantDetailFragment : Fragment() {
     }
     var restoID = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-//        fragments.add(RestaurantAboutFragment())
-//        fragments.add(RestaurantMenuFragment())
-//        fragments.add(RestaurantReviewsFragment())
-//
-//
+        GlobalData.currentFragment = "RestaurantDetailFragment"
         viewPagerRestaurantDetail.adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
 
         TabLayoutMediator(tabLayoutRestaurant, viewPagerRestaurantDetail) { tab, position ->
@@ -62,26 +54,19 @@ class RestaurantDetailFragment : Fragment() {
                 }
             }
         }.attach()
-//
-//        TabLayoutMediator(tabLayoutRestaurant, viewPagerRestaurantDetail) { tab, position ->
-//
-//        }.attach()
-//
-//        viewPagerRestaurantDetail.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-//            override fun onPageSelected(position: Int) {
-//                val menu = arrayOf(
-//                    R.id.tabItemAbout,
-//                    R.id.tabItemMenu,
-//                    R.id.tabItemReviews
-//                )
-//                tabLayoutRestaurant.getTabAt(menu[position])?.select()
-//            }
-//        })
 
         arguments?.let{
             restoID = RestaurantDetailFragmentArgs.fromBundle(requireArguments()).restaurantID
         }
         GlobalData.restoID = restoID
 
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_bookmark, menu)
+        val item = menu?.findItem(R.id.itemBookmark)
+
+        return super.onCreateOptionsMenu(menu, inflater)
     }
 }

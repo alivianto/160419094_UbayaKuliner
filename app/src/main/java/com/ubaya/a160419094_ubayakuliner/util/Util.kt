@@ -21,7 +21,6 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
 
             override fun onError(e: Exception?) {
 
-            }
-
-        })
+        }
+    })
 }

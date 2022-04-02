@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419094_ubayakuliner.GlobalData
 import com.ubaya.a160419094_ubayakuliner.R
+import com.ubaya.a160419094_ubayakuliner.model.Restaurant
 import com.ubaya.a160419094_ubayakuliner.view.adapter.RestaurantListAdapter
 import com.ubaya.a160419094_ubayakuliner.view.adapter.RestoCategoryAdapter
 import com.ubaya.a160419094_ubayakuliner.viewmodel.RestaurantListViewModel
@@ -16,6 +17,7 @@ import com.ubaya.a160419094_ubayakuliner.viewmodel.RestoCategoryViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_restaurant_list.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -56,7 +58,8 @@ class HomeFragment : Fragment() {
 
     private fun observeRestoViewModel() {
         restoViewModel.restaurantsLD.observe(viewLifecycleOwner) {
-            restaurantListAdapter.updateRestaurantList(it)
+            val arr: List<Restaurant> = it.slice(0..2)
+            restaurantListAdapter.updateRestaurantList(ArrayList(arr))
         }
         restoViewModel.restaurantsLoadErrorLD.observe(viewLifecycleOwner) {
             textErrorHomeRecomended.visibility = if(it) View.VISIBLE else View.GONE

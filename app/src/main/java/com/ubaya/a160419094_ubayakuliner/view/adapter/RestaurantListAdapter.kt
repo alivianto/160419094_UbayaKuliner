@@ -10,6 +10,7 @@ import com.ubaya.a160419094_ubayakuliner.GlobalData
 import com.ubaya.a160419094_ubayakuliner.R
 import com.ubaya.a160419094_ubayakuliner.model.Restaurant
 import com.ubaya.a160419094_ubayakuliner.util.loadImage
+import com.ubaya.a160419094_ubayakuliner.view.fragment.BookmarkFragmentDirections
 import com.ubaya.a160419094_ubayakuliner.view.fragment.HomeFragment
 import com.ubaya.a160419094_ubayakuliner.view.fragment.HomeFragmentDirections
 import com.ubaya.a160419094_ubayakuliner.view.fragment.RestaurantListFragmentDirections
@@ -37,8 +38,10 @@ class RestaurantListAdapter(val restaurantList: ArrayList<Restaurant>) : Recycle
                 var action: NavDirections
                 if(GlobalData.currentFragment == "Home"){
                     action = HomeFragmentDirections.actionItemHomeToRestaurantDetailFragment(restaurant.id.toString())
-                } else {
+                } else if(GlobalData.currentFragment == "Restaurant List") {
                     action = RestaurantListFragmentDirections.actionRestaurantListFragmentToRestaurantDetailFragment(restaurant.id.toString())
+                } else {
+                    action = BookmarkFragmentDirections.actionItemBookmarkToRestaurantDetailFragment(restaurant.id.toString())
                 }
                 Navigation.findNavController(it).navigate(action)
             }
