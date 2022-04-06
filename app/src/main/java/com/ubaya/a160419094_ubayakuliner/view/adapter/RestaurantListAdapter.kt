@@ -15,7 +15,6 @@ import com.ubaya.a160419094_ubayakuliner.view.fragment.HomeFragment
 import com.ubaya.a160419094_ubayakuliner.view.fragment.HomeFragmentDirections
 import com.ubaya.a160419094_ubayakuliner.view.fragment.RestaurantListFragmentDirections
 import kotlinx.android.synthetic.main.card_restaurant_list_item.view.*
-import kotlinx.android.synthetic.main.card_resto_category.view.*
 import kotlinx.android.synthetic.main.fragment_restaurant_detail.view.*
 
 class RestaurantListAdapter(val restaurantList: ArrayList<Restaurant>) : RecyclerView

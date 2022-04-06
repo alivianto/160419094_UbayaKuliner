@@ -56,11 +56,6 @@ class RestaurantListFragment : Fragment() {
         }
         viewModel.restaurantsLoadErrorLD.observe(viewLifecycleOwner) {
             textErrorRL.visibility = if(it) View.VISIBLE else View.GONE
-//            if(it) {
-//                textError.visibility = View.VISIBLE
-//            } else {
-//                textError.visibility = View.GONE
-//            }
         }
         viewModel.loadingLD.observe(viewLifecycleOwner) {
             if (it) {

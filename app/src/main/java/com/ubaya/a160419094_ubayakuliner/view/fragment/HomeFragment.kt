@@ -11,9 +11,7 @@ import com.ubaya.a160419094_ubayakuliner.GlobalData
 import com.ubaya.a160419094_ubayakuliner.R
 import com.ubaya.a160419094_ubayakuliner.model.Restaurant
 import com.ubaya.a160419094_ubayakuliner.view.adapter.RestaurantListAdapter
-import com.ubaya.a160419094_ubayakuliner.view.adapter.RestoCategoryAdapter
 import com.ubaya.a160419094_ubayakuliner.viewmodel.RestaurantListViewModel
-import com.ubaya.a160419094_ubayakuliner.viewmodel.RestoCategoryViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_restaurant_list.*
 import java.util.*

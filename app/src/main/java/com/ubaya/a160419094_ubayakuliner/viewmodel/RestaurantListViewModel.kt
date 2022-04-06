@@ -27,7 +27,6 @@ class RestaurantListViewModel(application: Application) : AndroidViewModel(appli
 
         queue = Volley.newRequestQueue(getApplication())
         var url = "https://alivianto.github.io/ubaya-kuliner-json/restaurant-near-ubaya-data.json"
-        //var url = "http://adv.jitusolution.com/student.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->

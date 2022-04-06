@@ -10,6 +10,7 @@ import com.ubaya.a160419094_ubayakuliner.R
 import com.ubaya.a160419094_ubayakuliner.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile_detail.*
+import java.math.BigInteger
 
 /**
  * A simple [Fragment] subclass.

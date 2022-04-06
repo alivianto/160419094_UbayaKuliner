@@ -32,7 +32,6 @@ data class Review(
 
 data class Restaurant(
     val id:String?,
-    //@SerializedName("student_name")
     val name:String?,
     val photo:String?,
     val address: String?,

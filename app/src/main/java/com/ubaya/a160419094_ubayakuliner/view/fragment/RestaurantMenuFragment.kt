@@ -34,7 +34,6 @@ class RestaurantMenuFragment : Fragment() {
 
     var restoID = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         restoID = GlobalData.restoID
 
         menuViewModel = ViewModelProvider(this).get(RestaurantMenusListViewModel::class.java)
